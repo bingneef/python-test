@@ -1,6 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from lib.db import DB
 
 sns.set_theme()
 
@@ -12,7 +13,9 @@ def main():
         ]
     )
 
-    print(df.describe())
+    print(len(DB().get_all('samples')))
+    DB().store(df, 'samples')
+    print(DB().get_all('samples').describe())
 
     sns_plot = sns.barplot(data=df)
     sns_plot.get_figure().savefig('images/sample.png')

@@ -2,7 +2,8 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - command: pip show pandas
+  - command: pip3 install -r requirements.txt
+  - command: docker-compose up -d
 
 vscode:
   extensions:
